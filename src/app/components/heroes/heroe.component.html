@@ -1,3 +1,86 @@
-<p>
-  heroe works!
-</p>
+<h3>Héroe <small>{{ heroe.nombre }}</small> </h3>
+
+<button [routerLink]="['heroes']"
+        class="btn btn-outline-danger"
+        type="button"
+        name="btnRegresar">
+        Regresar
+</button>
+
+<button (click)="agregarNuevo(forma)"
+        type="button"
+        class="btn btn-outline-success"
+        name="button">
+        Nuevo Héroe
+</button>
+
+
+<hr>
+
+<div class="row animated fadeIn fast">
+
+  <div class="col-md-12">
+
+    <form (ngSubmit)="guardar()" #forma="ngForm">
+
+      <!-- Nombre -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="nameHeroe">Nombre</label>
+        <div class="col-sm-10">
+          <input  [(ngModel)]="heroe.nombre"
+                  name="nombre"
+                  class="form-control"
+                  type="text"
+                  placeholder="Nombre del héroe"
+                  required>
+        </div>
+
+      </div>
+
+      <!-- Casa -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="casaHeroe">Casa</label>
+        <div class="col-sm-10">
+          <select [(ngModel)]="heroe.casa"
+                  name="casa"
+                  class="form-control">
+            <option value="Marvel">Marvel</option>
+            <option value="DC">DC</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Bio -->
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="bioHeroe">Bio</label>
+        <div class="col-sm-10">
+          <textarea [(ngModel)]="heroe.bio"
+                    name="bio"
+                    class="form-control"
+                    type="text">
+            </textarea>
+        </div>
+
+
+        <!-- Botón Guardar -->
+        <div class="form-group text-center col-sm-12">
+          <span class="col-sm-2"></span>
+          <div>
+            <button [disabled]="!forma.valid"
+                    class="btn btn-outline-primary"
+                    type="submit"
+                    name="btnGuardar">
+                    Guardar cambios
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+
+</div>
